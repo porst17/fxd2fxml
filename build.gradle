@@ -1,8 +1,9 @@
 group = 'de.mfo.fxd2fxml'
 version = '0.1.0-SNAPSHOT'
 
-//apply from: 'http://dl.bintray.com/content/shemnon/javafx-gradle/0.4.0/javafx.plugin'
-apply from: 'http://repository-javafx-gradle-plugin.forge.cloudbees.com/snapshot/0.3.0-SNAPSHOT/javafx.plugin'
+println GradleVersion.current().getVersion()
+
+apply from: 'http://dl.bintray.com/content/shemnon/javafx-gradle/0.4.0/javafx.plugin'
 
 targetCompatibility = 1.7
 sourceCompatibility = 1.7
@@ -14,21 +15,40 @@ repositories {
 dependencies {
     compile group: 'commons-cli', name: 'commons-cli', version: '1.3.1'
 
-	String os = System.getProperty("os.name").toLowerCase();
-	compile fileTree( dir: 'libs', includes: ['*.jar'], excludes: [ '**/java-fx-1_3_1' ] )
+    String os = System.getProperty("os.name").toLowerCase();
 
-	if( os.indexOf( "win" ) >= 0 )
-		compile files( 'libs/java-fx-1_3_1/javafx-rt-windows-i586-1_3_1.jar' )
-	else if( os.indexOf( "linux" ) >= 0 )
-		compile files( 'libs/java-fx-1_3_1/javafx-rt-linux-i586-1_3_1.jar' )
-	else if( os.indexOf( "mac" ) >= 0 )
-		compile files( 'libs/java-fx-1_3_1/javafx-rt-macosx-i586-1_3_1.jar' )
+    if( os.indexOf( "win" ) >= 0 )
+        compile files( 'libs/javafx-rt-windows-i586-1_3_1.jar' )
+    else if( os.indexOf( "linux" ) >= 0 )
+        compile files( 'libs/javafx-rt-linux-i586-1_3_1.jar' )
+    else if( os.indexOf( "mac" ) >= 0 )
+        compile files( 'libs/javafx-rt-macosx-i586-1_3_1.jar' )
+
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = '1.9'
+    gradleVersion = '1.9'
 }
 
 javafx {
     mainClass = 'de.mfo.fxd2fxml.Main'
+    if( project.hasProperty( 'infile' ) && project.hasProperty( 'outfile' ) ) {
+        println project.infile;
+        println project.outfile;
+
+        arguments = [ project.infile, project.outfile ];
+    } else {
+        throw new GradleException( 'provide -Pinfile= and -Poutfile= arguments' );
+    }
 }
+
+task checkJavaVersion << {
+    if( !JavaVersion.current().isJava7() ) {
+        String message = "ERROR: Java 1.7 required but " +
+            JavaVersion.current() +
+            " found. Change your JAVA_HOME environment variable.";
+        throw new IllegalStateException( message );
+    }
+}
+
+compileJava.dependsOn checkJavaVersion

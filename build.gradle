@@ -1,5 +1,5 @@
 group = 'de.mfo.fxd2fxml'
-version = '0.1.0-SNAPSHOT'
+version = '0.1.0'
 
 println GradleVersion.current().getVersion()
 

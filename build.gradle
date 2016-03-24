@@ -18,11 +18,11 @@ dependencies {
     String os = System.getProperty("os.name").toLowerCase();
 
     if( os.indexOf( "win" ) >= 0 )
-        compile files( 'libs/javafx-rt-windows-i586-1_3_1.jar' )
+        compile files( 'javafx-rt-1_3_1/javafx-rt-windows-i586-1_3_1.jar' )
     else if( os.indexOf( "linux" ) >= 0 )
-        compile files( 'libs/javafx-rt-linux-i586-1_3_1.jar' )
+        compile files( 'javafx-rt-1_3_1/javafx-rt-linux-i586-1_3_1.jar' )
     else if( os.indexOf( "mac" ) >= 0 )
-        compile files( 'libs/javafx-rt-macosx-i586-1_3_1.jar' )
+        compile files( 'javafx-rt-1_3_1/javafx-rt-macosx-i586-1_3_1.jar' )
 
 }
 

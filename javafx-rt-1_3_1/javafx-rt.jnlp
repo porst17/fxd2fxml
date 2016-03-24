@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="RUNTIME_CODEBASE" href="javafx-rt.jnlp">
+    <information>
+        <title>JavaFX Runtime</title>
+        <vendor>Oracle Corporation</vendor>
+        <offline-allowed/>
+    </information>
+    <security>
+        <all-permissions/>
+    </security>
+    <update check="background"/>
+
+    <resources>
+        <jar href="progressbar-1_3_1.jar" part="javafx-rt" download="progress"/>
+    </resources>
+
+    <resources os="Windows">
+	<jar href="javafx-rt-windows-i586-1_3_1.jar" part="javafx-rt" download="eager"/>   
+    </resources>
+
+    <resources os="Mac OS X">
+	<jar href="javafx-rt-macosx-i586-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+   
+
+    <resources os="Linux">
+	<jar href="javafx-rt-linux-i586-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+
+
+    <resources os="SunOS">
+	<jar href="javafx-rt-solaris-i586-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+
+    <resources os="Windows" arch="x86">
+        <nativelib href="javafx-rt-natives-windows-i586-1_3_1.jar" part="javafx-rt" download="eager"/>
+        <nativelib href="jmc-natives-windows-i586-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+
+
+    <resources os="Mac OS X" arch="ppc">
+        <nativelib href="javafx-rt-natives-macosx-universal-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+    <resources os="Mac OS X" arch="i386">
+        <nativelib href="javafx-rt-natives-macosx-i386-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+    <resources os="Mac OS X" arch="x86_64">
+        <nativelib href="javafx-rt-natives-macosx-x86_64-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+
+    <resources os="Linux" arch="i386">
+        <nativelib href="javafx-rt-natives-linux-i586-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+
+    <resources os="Linux" arch="x86">
+        <nativelib href="javafx-rt-natives-linux-i586-1_3_1.jar" part="javafx-rt" download="eager"/>
+    </resources>
+
+ 
+
+    <component-desc progress-class="com.javafx.progressbar.ProgressManager"/>
+</jnlp>
